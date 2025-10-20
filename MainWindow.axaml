@@ -1,0 +1,54 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:InventorySystem"
+        x:Class="InventorySystem.MainWindow"
+        x:DataType="local:MainWindow"
+        Title="Inventory System"
+        Width="750" Height="420">
+    
+
+    <StackPanel Margin="12" Spacing="8">
+
+        
+        <TextBlock Text="Queued Orders" FontWeight="Bold" />
+        <DataGrid ItemsSource="{Binding QueuedOrders}"
+                  AutoGenerateColumns="False"
+                  Height="120">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Time"
+                                    Binding="{Binding Time}" />
+                <DataGridTextColumn Header="Items"
+                                    Binding="{Binding OrderLinesDisplay}" />
+                <DataGridTextColumn Header="Total"
+                                    Binding="{Binding Total}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        
+        <Button Content="Process Next Order"
+                Click="ProcessNext_Click"
+                Margin="0,8,0,8" />
+
+        
+        <TextBlock Text="Processed Orders" FontWeight="Bold" />
+        <DataGrid ItemsSource="{Binding ProcessedOrders}"
+                  AutoGenerateColumns="False"
+                  Height="120">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Time"
+                                    Binding="{Binding Time}" />
+                <DataGridTextColumn Header="Items"
+                                    Binding="{Binding OrderLinesDisplay}" />
+                <DataGridTextColumn Header="Total"
+                                    Binding="{Binding Total}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        
+        <TextBlock Text="{Binding TotalRevenue, StringFormat='Total revenue: {0:C}'}"
+                   FontSize="16"
+                   FontWeight="Bold"
+                   Margin="0,8,0,0" />
+
+    </StackPanel>
+</Window>
