@@ -1457,11 +1457,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Rider\\InventorySystem\\InventorySystem.csproj",
+      "projectUniqueName": "G:\\Rider\\InventorySystem - Copy\\InventorySystem.csproj",
       "projectName": "InventorySystem",
-      "projectPath": "G:\\Rider\\InventorySystem\\InventorySystem.csproj",
+      "projectPath": "G:\\Rider\\InventorySystem - Copy\\InventorySystem.csproj",
       "packagesPath": "C:\\Users\\Christan\\.nuget\\packages\\",
-      "outputPath": "G:\\Rider\\InventorySystem\\obj\\",
+      "outputPath": "G:\\Rider\\InventorySystem - Copy\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Christan\\AppData\\Roaming\\NuGet\\NuGet.Config"
