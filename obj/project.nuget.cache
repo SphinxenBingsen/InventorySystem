@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xbTBcUb3EnQ=",
+  "dgSpecHash": "4ZkbdAIao3I=",
   "success": true,
-  "projectFilePath": "G:\\Rider\\InventorySystem\\InventorySystem.csproj",
+  "projectFilePath": "G:\\Rider\\InventorySystem - Copy\\InventorySystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Christan\\.nuget\\packages\\avalonia\\11.3.6\\avalonia.11.3.6.nupkg.sha512",
     "C:\\Users\\Christan\\.nuget\\packages\\avalonia.angle.windows.natives\\2.1.25547.20250602\\avalonia.angle.windows.natives.2.1.25547.20250602.nupkg.sha512",
