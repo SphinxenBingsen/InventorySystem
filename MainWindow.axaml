@@ -1,54 +1,83 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:InventorySystem"
-        x:Class="InventorySystem.MainWindow"
-        x:DataType="local:MainWindow"
-        Title="Inventory System"
-        Width="750" Height="420">
-    
+<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:InventorySystem"
+    x:Class="InventorySystem.MainWindow"
+    x:DataType="local:MainWindow"
+    Width="900"
+    Height="600"
+    Title="Inventory Robot Demo">
 
-    <StackPanel Margin="12" Spacing="8">
 
-        
-        <TextBlock Text="Queued Orders" FontWeight="Bold" />
-        <DataGrid ItemsSource="{Binding QueuedOrders}"
-                  AutoGenerateColumns="False"
-                  Height="120">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Time"
-                                    Binding="{Binding Time}" />
-                <DataGridTextColumn Header="Items"
-                                    Binding="{Binding OrderLinesDisplay}" />
-                <DataGridTextColumn Header="Total"
-                                    Binding="{Binding Total}" />
-            </DataGrid.Columns>
-        </DataGrid>
+    <Window.Resources>
 
-        
-        <Button Content="Process Next Order"
-                Click="ProcessNext_Click"
-                Margin="0,8,0,8" />
+        <DataTemplate x:Key="OrderTemplate" x:DataType="local:Order">
+            <StackPanel Margin="6" Spacing="2">
+                <TextBlock FontWeight="Bold" Text="{Binding CustomerName}" />
+                <TextBlock Opacity="0.8" Text="{Binding OrderLines.Count, StringFormat={}{0} lines}" />
+                <ItemsControl ItemsSource="{Binding OrderLines}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="local:OrderLine">
+                            <TextBlock Text="{Binding Item.Name, StringFormat=• {0}}" />
 
-        
-        <TextBlock Text="Processed Orders" FontWeight="Bold" />
-        <DataGrid ItemsSource="{Binding ProcessedOrders}"
-                  AutoGenerateColumns="False"
-                  Height="120">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Time"
-                                    Binding="{Binding Time}" />
-                <DataGridTextColumn Header="Items"
-                                    Binding="{Binding OrderLinesDisplay}" />
-                <DataGridTextColumn Header="Total"
-                                    Binding="{Binding Total}" />
-            </DataGrid.Columns>
-        </DataGrid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </DataTemplate>
 
-        
-        <TextBlock Text="{Binding TotalRevenue, StringFormat='Total revenue: {0:C}'}"
-                   FontSize="16"
-                   FontWeight="Bold"
-                   Margin="0,8,0,0" />
 
-    </StackPanel>
+        <DataTemplate x:Key="ProcessedOrderTemplate" x:DataType="local:Order">
+            <StackPanel Margin="6" Spacing="2">
+                <TextBlock FontWeight="Bold" Text="{Binding CustomerName}" />
+                <TextBlock Opacity="0.8" Text="{Binding OrderLines.Count, StringFormat={}{0} lines}" />
+                <ItemsControl ItemsSource="{Binding OrderLines}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="local:OrderLine">
+                            <TextBlock Text="{Binding Item.Name, StringFormat=• {0}}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="*,*">
+
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                    Orientation="Horizontal" Spacing="8" Margin="12">
+            <Button Content="Process Next Order" Click="ProcessNext_Click" />
+            <Button Content="Test Robot Move" Click="TestRobotMove_OnClick" />
+            <Button Content="Ping Robot (Log)" Click="PingRobot_OnClick" />
+            <TextBlock Text="Total revenue: " Margin="16,0,0,0" VerticalAlignment="Center" />
+            <TextBlock Text="{Binding TotalRevenue}" VerticalAlignment="Center" />
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="12" Spacing="8">
+            <TextBlock Text="Queued Orders" FontWeight="Bold" />
+            <ListBox ItemsSource="{Binding QueuedOrders}"
+                     ItemTemplate="{StaticResource OrderTemplate}"
+                     Height="220" />
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="12" Spacing="8">
+            <TextBlock Text="Processed Orders" FontWeight="Bold" />
+            <ListBox ItemsSource="{Binding ProcessedOrders}"
+                     ItemTemplate="{StaticResource ProcessedOrderTemplate}"
+                     Height="220" />
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                    Margin="12,0,12,12" Spacing="4">
+            <TextBlock Text="Status" FontWeight="Bold" />
+            <ScrollViewer Height="140">
+                <TextBlock x:Name="StatusMessages" TextWrapping="Wrap" />
+            </ScrollViewer>
+        </StackPanel>
+
+    </Grid>
 </Window>

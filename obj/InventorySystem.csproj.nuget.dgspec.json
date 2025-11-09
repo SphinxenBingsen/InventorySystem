@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Rider\\InventorySystem\\InventorySystem.csproj": {}
+    "G:\\Rider\\InventorySystemWithDatabase\\InventorySystem.csproj": {}
   },
   "projects": {
-    "G:\\Rider\\InventorySystem\\InventorySystem.csproj": {
+    "G:\\Rider\\InventorySystemWithDatabase\\InventorySystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Rider\\InventorySystem\\InventorySystem.csproj",
+        "projectUniqueName": "G:\\Rider\\InventorySystemWithDatabase\\InventorySystem.csproj",
         "projectName": "InventorySystem",
-        "projectPath": "G:\\Rider\\InventorySystem\\InventorySystem.csproj",
+        "projectPath": "G:\\Rider\\InventorySystemWithDatabase\\InventorySystem.csproj",
         "packagesPath": "C:\\Users\\Christan\\.nuget\\packages\\",
-        "outputPath": "G:\\Rider\\InventorySystem\\obj\\",
+        "outputPath": "G:\\Rider\\InventorySystemWithDatabase\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Christan\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -67,6 +67,18 @@
             "Avalonia.Themes.Fluent": {
               "target": "Package",
               "version": "[11.3.6, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [
